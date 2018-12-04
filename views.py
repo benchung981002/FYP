@@ -4,13 +4,12 @@ from flask_appbuilder.models.sqla.interface import SQLAInterface
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from app import appbuilder, db
 
-from .models import MyUser, Activity, Type, Place, Payment, Forum, Post, Comment, Booking, Login, FAQ, Feedback, Review, Rating
+from .models import MyUser, Activity, Type, Place, Payment, Forum, Post, Comment, Booking, Login, FAQ, Feedback, Review, Rating, partyroom, partybooking, Blog, Blogtype, Ticket, Showhistory, News, Contact, Company, Country, Travel, Flight, Webannouncement
 
 
 
 def department_query():
     return db.session.query(Department)
-
 
 class MyUserView(ModelView):
     datamodel = SQLAInterface(MyUser)
@@ -53,6 +52,58 @@ class ReviewView(ModelView):
 
 class RatingView(ModelView):
     datamodel = SQLAInterface(Rating)
+    
+class PartyroomView(ModelView):
+    
+    datamodel = SQLAInterface(Partyroom)
+
+class PartyroombookingView(ModelView):
+    
+    datamodel = SQLAInterface(Partyroombooking)
+
+class BlogView(ModelView):
+    
+    datamodel = SQLAInterface(Blog)
+
+class BlogtypeView(ModelView):
+    
+    datamodel = SQLAInterface(Blogtype)
+
+class TicketView(ModelView):
+    
+    datamodel = SQLAInterface(Ticket)
+
+class ShowhistoryView(ModelView):
+    
+    datamodel = SQLAInterface(Showhistory)
+
+class NewsView(ModelView):
+    
+    datamodel = SQLAInterface(News)
+
+class ContactView(ModelView):
+    
+    datamodel = SQLAInterface(Contact)
+
+class CompanyView(ModelView):
+    
+    datamodel = SQLAInterface(Company)
+
+class CountryView(ModelView):
+    
+    datamodel = SQLAInterface(Country)
+
+class TravelView(ModelView):
+    
+    datamodel = SQLAInterface(Travel)
+
+class FlightView(ModelView):
+    
+    datamodel = SQLAInterface(Flight)
+
+class WebannouncementView(ModelView):
+    
+    datamodel = SQLAInterface(Webannouncement)
 
 db.create_all()
 
@@ -69,5 +120,17 @@ appbuilder.add_view(LoginView, "Login", icon="fa-folder-open-o", category='Manag
 appbuilder.add_view(FAQView, "FAQ", icon="fa-folder-open-o", category='Manage', )
 appbuilder.add_view(FeedbackView, "Feedback", icon="fa-folder-open-o", category='Manage', )
 appbuilder.add_view(ReviewView, "Review", icon="fa-folder-open-o", category='Manage', )
-appbuilder.add_view(RatingView, "Rating,", icon="fa-folder-open-o", category='Manage', )
-
+appbuilder.add_view(RatingView, "Rating", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(PartyroomView, "Partyroom", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(PartyroombookingView, "Partyroombooking", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(BlogView, "Blog", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(BlogtypeView, "Blogtype", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(TicketView, "Ticket", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(ShowhistoryView, "Showhistory", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(NewsView, "News", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(ContactView, "Contact", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(CompanyView, "Company", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(CountryView, "Country", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(TravelView, "Travel", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(FlightView, "Flight", icon="fa-folder-open-o", category='Manage', )
+appbuilder.add_view(WebannouncementView, "Webannouncement", icon="fa-folder-open-o", category='Manage', )
