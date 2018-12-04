@@ -230,7 +230,7 @@ class Ticket(Model):
     def __repr__(self):
         return self.name
                   
-class ShopHistory(Model):
+class Shophistory(Model):
     __tablename__ = 'shophistory'
     id = Column(Integer, primary_key=True)
     date = Column(Date)
