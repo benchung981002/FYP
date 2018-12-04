@@ -207,7 +207,16 @@ class Blog(Model):
     blogtype = relationship('Blogtype')
                   
     def __repr__(self):
-        return self.title 
+        return self.title
+                  
+class Blogtype(Model): 
+    __tablename__ = 'Blogtype'
+    id = Column(Integer, primary_key=True)
+    category = Column(String(20))
+
+    def __repr__(self):
+        return self.category       
+                  
 class Ticket(Model):
     __tablename__ = 'ticket'
     id = Column(Integer, primary_key=True)                 
@@ -296,7 +305,10 @@ class Flight(Model):
     user = relationship("MyUser")
     company_id = Column(Integer, ForeignKey('company_id'))
     company = relationship('Company')
-                                
+                  
+    def __repr__(self):
+        return self.quantity
+                  
 class Webannouncement(Model):
     __tablename__ = 'webannouncement'
     id = Column(Integer, primary_key=True)
