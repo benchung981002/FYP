@@ -171,3 +171,129 @@ class Rating(Model):
 
     def __repr__(self):
         return self.title
+    
+class Partyroom(Model):
+    __tablename__ = 'partyroom'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(20)
+    price = Column(Float)
+    decription = Column(String(200))
+    address = Column(String(200))
+           
+    def __repr__(self):
+        return self.name
+                  
+ class PartyroomBooking(Model):
+    __tablename__ = 'partyroombooking'
+    id = Column(Integer, primary_key=True)
+    time = Column(Date)
+    user_id = Column(Integer, ForeignKey('myuser.id'))
+    user = relationship("MyUser")
+    partyroom_id = Column(Integer, ForeignKey('partyroom.id'))
+    partyroom = relationship('Partyroom')
+                  
+     def __repr__(self):
+        return self.time
+                  
+class Blog(Model):
+    __tablename__ = 'Blog'
+    id = Column(Integer, primary_key=True)  
+    title = Column(String(50))
+    date = Column(Date)
+    content = Column(String(1000))
+    user_id = Column(Integer, ForeignKey('myuser.id'))
+    user = relationship("MyUser")
+    blogtype_id = Column(Integer, ForeignKey('blogtype.id'))
+    blogtype = relationship('Blogtype')
+                  
+    def __repr__(self):
+        return self.title 
+class Ticket(Model):
+    __tablename__ = 'ticket'
+    id = Column(Integer, primary_key=True)                 
+    name = Column(String(50))
+    quantity= Column(Integer)
+    type = Column(String(20))
+    price = Column(Float)
+    activity_id = Column(Integer, ForeignKey('activity.id'))
+    activity = relationship("Activity")
+
+    def __repr__(self):
+        return self.name
+                  
+class ShopHistory(Model):
+    __tablename__ = 'shophistory'
+    id = Column(Integer, primary_key=True)
+    date = Column(Date)
+    user_id = Column(Integer, ForeignKey('myuser.id'))
+    user = relationship("MyUser")              
+    ticket_id= Column(Integer, ForeignKey('ticket.id'))
+    ticket= relationship('Ticket')
+                  
+    def __repr__(self):
+        return self.date
+                  
+class News(Model):
+    __tablename__ = 'news'
+    id = Column(Integer, primary_key=True)
+    title = Column(String(20))
+    content= Column(String(500))
+    date = Column(Date)
+    activity_id = Column(Integer, ForeignKey('activity.id'))
+    activity = relationship("Activity")    
+      
+    def __repr__(self):
+        return self.title
+                  
+class Contact(Model):
+    __tablename__ = 'contact'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(50))
+    phone = Column(Integer)
+    email = Column(String(50))
+                  
+    def __repr__(self):
+        return self.name
+                  
+class Company(Model):
+    __tablename__ = 'Company'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(20))
+    email = Column(String(100))
+    phone = Column(Integer)
+                  
+    def __repr__(self):
+        return self.name
+                  
+class Country(Model):
+    __tablename__ = 'country'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(20))
+                  
+    def __repr__(self):
+        return self.name
+                  
+class Travel(Model):
+    __tablename__ = 'travel'
+    id = Column(Integer, primary_key=True)
+    detail = Column(String(1000))
+    date = Column(Date)     
+    country_id= Column(Integer, ForeignKey('country.id'))
+    country = relationship('Country')
+             
+    def __repr__(self):
+        return self.date
+                  
+class Flight(Model):
+    __tablename__ = 'flight'
+    id = Column(Integer, primary_key=True)
+    quantity = Column(Integer)
+    checkindate= Column()
+    checkoutdate= Column()
+    country_id= Column(Integer, ForeignKey('country.id'))
+    country = relationship('Country')
+    user_id = Column(Integer, ForeignKey('myuser.id'))
+    user = relationship("MyUser")
+    company_id = Column(Integer, ForeignKey('company_id'))
+    company = relationship('Company')
+                                
