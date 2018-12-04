@@ -297,3 +297,12 @@ class Flight(Model):
     company_id = Column(Integer, ForeignKey('company_id'))
     company = relationship('Company')
                                 
+class Webannouncement(Model):
+    __tablename__ = 'webannouncement'
+    id = Column(Integer, primary_key=True)
+    date = Column(Date)   
+    title = Column(String(20))
+    content= Column(String(500))    
+                  
+    def __repr__(self):
+        return self.title                  
